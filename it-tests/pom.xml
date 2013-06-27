@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>com.peergreen.webconsole</groupId>
+    <artifactId>web-console-it</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <name>Peergreen Web Console :: Integration tests :: Test Cases</name>
+  <artifactId>it-tests</artifactId>
+  <packaging>jar</packaging>
+
+  <properties>
+    <pax.exam.version>3.0.0</pax.exam.version>
+  </properties>
+
+  <dependencies>
+    <!-- Web BaseConsole  -->
+    <dependency>
+      <groupId>com.peergreen.webconsole</groupId>
+      <artifactId>web-console-api</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.peergreen.webconsole</groupId>
+      <artifactId>web-console-core</artifactId>
+      <version>${project.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.peergreen.webconsole</groupId>
+      <artifactId>vaadin-7.1.0.beta1</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- htmlunit dependencies  -->
+    <dependency>
+      <groupId>com.peergreen.webconsole</groupId>
+      <artifactId>htmlunit-all</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <!-- Deployment api -->
+    <dependency>
+      <groupId>com.peergreen.deployment</groupId>
+      <artifactId>deployment-api</artifactId>
+      <version>1.0.2-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Test server -->
+    <dependency>
+      <groupId>com.peergreen.server</groupId>
+      <artifactId>peergreen-server-tomcat</artifactId>
+      <version>1.0.0-M2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Pax Exam dependencies -->
+    <dependency>
+      <groupId>org.ops4j.pax.exam</groupId>
+      <artifactId>pax-exam-container-native</artifactId>
+      <version>${pax.exam.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.ops4j.pax.exam</groupId>
+      <artifactId>pax-exam-junit4</artifactId>
+      <version>${pax.exam.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.ops4j.pax.exam</groupId>
+      <artifactId>pax-exam-link-mvn</artifactId>
+      <version>${pax.exam.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.ops4j.pax.url</groupId>
+      <artifactId>pax-url-aether</artifactId>
+      <version>1.5.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>0.9.20</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>0.9.20</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <version>5.0.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.felix</groupId>
+      <artifactId>org.apache.felix.ipojo</artifactId>
+      <version>1.10.1</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <dependencyManagement>
+    <!-- Force compendium version to latest otherwise we end up using the
+      one from iPOJO which is quite old -->
+    <dependencies>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.compendium</artifactId>
+        <version>4.3.1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <id>reserve-ports</id>
+            <phase>process-test-resources</phase>
+            <goals>
+              <goal>reserve-network-port</goal>
+            </goals>
+            <configuration>
+              <portNames>
+                <portName>telnetd.port</portName>
+              </portNames>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.14</version>
+        <configuration>
+          <systemPropertyVariables>
+            <com.peergreen.telnetd.ports>${telnetd.port}</com.peergreen.telnetd.ports>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+
+</project>

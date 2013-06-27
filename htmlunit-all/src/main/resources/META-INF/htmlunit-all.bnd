@@ -1,0 +1,2 @@
+Export-Package net.sourceforge.htmlunit.*, com.gargoylesoftware.htmlunit.*, org.apache.commons.*, org.apache.http.*, org.w3c.css.sac.*, org.apache.xerces.*, com.steadystate.css.*, org.cyberneko.html.*, org.apache.xml.utils.*
+Import-Package *;resolution:=optional
