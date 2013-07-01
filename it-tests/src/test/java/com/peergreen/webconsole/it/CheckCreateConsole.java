@@ -19,6 +19,7 @@ import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerSuite;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.BundleContext;
+import org.ow2.chameleon.testing.helpers.OSGiHelper;
 
 import javax.inject.Inject;
 

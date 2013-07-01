@@ -64,6 +64,7 @@ public class WaitForStability {
                 mavenBundle("org.slf4j", "slf4j-api").version("1.7.2"),
                 mavenBundle("org.slf4j", "slf4j-simple").version("1.7.2").noStart(),
                 mavenBundle("org.jsoup", "jsoup").version("1.6.3"),
+                mavenBundle("org.ow2.chameleon.testing", "osgi-helpers").version("0.6.0"),
                 mavenBundle("org.atmosphere", "atmosphere-runtime").version("1.0.12"),
                 mavenBundle("com.vaadin", "vaadin-shared-deps").version("1.0.2"),
                 mavenBundle("com.peergreen.webconsole", "vaadin-7.1.0.beta1").version("1.0.0-SNAPSHOT"),
