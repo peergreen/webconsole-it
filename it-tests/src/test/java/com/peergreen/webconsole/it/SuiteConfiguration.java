@@ -1,22 +1,8 @@
-/**
- * Copyright 2013 Peergreen S.A.S.
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
 package com.peergreen.webconsole.it;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
+import com.peergreen.webconsole.it.common.StabilityHelper;
 import org.apache.felix.ipojo.extender.queue.QueueService;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -32,20 +18,20 @@ import org.ops4j.pax.exam.util.Filter;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-
 import java.net.URI;
-import java.net.URISyntaxException;
 
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.CoreOptions.systemProperty;
 
+/**
+ * @author Mohammed Boukada
+ */
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerSuite.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class WaitForStability {
-
+public class SuiteConfiguration {
     @Inject
     @Filter("(ipojo.queue.mode=async)")
     private QueueService queueService;
@@ -53,24 +39,22 @@ public class WaitForStability {
     private StabilityHelper helper;
 
     @Configuration
-    public Option[] config() throws URISyntaxException {
+    public Option[] config() throws Exception {
         // Reduce log level.
         Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
         root.setLevel(Level.INFO);
-        URI file = getClass().getResource("/adminConsole.xml").toURI();
+        URI unsecuredConsoleFile = getClass().getResource("/unsecuredConsole.xml").toURI();
+        URI securedConsoleFile = getClass().getResource("/securedConsole.xml").toURI();
+        URI communityDeploymentPlan = getClass().getResource("/communityDeploymentPlan.xml").toURI();
+        URI professionalDeploymentPlan = getClass().getResource("/professionalDeploymentPlan.xml").toURI();
 
-        return options(systemProperty("admin.console.test.configuration").value(file.toString()),
+        return options(systemProperty("unsecured.admin.console.test.configuration").value(unsecuredConsoleFile.toString()),
+                systemProperty("secured.admin.console.test.configuration").value(securedConsoleFile.toString()),
+                systemProperty("community.deployment.plan").value(communityDeploymentPlan.toString()),
+                systemProperty("professional.deployment.plan").value(professionalDeploymentPlan.toString()),
                 systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level").value("WARN"),
-                mavenBundle("org.slf4j", "slf4j-api").version("1.7.2"),
-                mavenBundle("org.slf4j", "slf4j-simple").version("1.7.2").noStart(),
-                mavenBundle("org.jsoup", "jsoup").version("1.6.3"),
                 mavenBundle("org.ow2.chameleon.testing", "osgi-helpers").version("0.6.0"),
-                mavenBundle("org.atmosphere", "atmosphere-runtime").version("1.0.12"),
-                mavenBundle("com.vaadin", "vaadin-shared-deps").version("1.0.2"),
-                mavenBundle("com.peergreen.webconsole", "vaadin-7.1.0.beta1").version("1.0.0-SNAPSHOT"),
                 mavenBundle("com.peergreen.webconsole", "htmlunit-all").version("1.0.0-SNAPSHOT"),
-                mavenBundle("com.peergreen.webconsole", "web-console-api").version("1.0.0-SNAPSHOT"),
-                mavenBundle("com.peergreen.webconsole", "web-console-core").version("1.0.0-SNAPSHOT"),
                 junitBundles()
         );
     }

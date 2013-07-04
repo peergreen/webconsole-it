@@ -1,4 +1,4 @@
-package com.peergreen.webconsole.it;
+package com.peergreen.webconsole.it.common;
 
 import static java.lang.String.format;
 

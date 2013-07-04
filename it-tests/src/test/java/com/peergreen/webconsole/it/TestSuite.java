@@ -15,12 +15,22 @@
  */
 package com.peergreen.webconsole.it;
 
+import com.peergreen.webconsole.it.common.CheckConsoleBase;
+import com.peergreen.webconsole.it.community.CheckCommunityConsoleFactory;
+import com.peergreen.webconsole.it.community.CheckCreateCommunityConsole;
+import com.peergreen.webconsole.it.community.CommunityConfiguration;
+import com.peergreen.webconsole.it.professional.CheckCreateProfessionalConsole;
+import com.peergreen.webconsole.it.professional.CheckProfessionalConsoleFactory;
+import com.peergreen.webconsole.it.professional.ProfessionalConfiguration;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({WaitForStability.class, CheckConsoleBase.class, CheckCreateConsole.class})
+@SuiteClasses({SuiteConfiguration.class, CommunityConfiguration.class, CheckConsoleBase.class,
+        CheckCommunityConsoleFactory.class, CheckCreateCommunityConsole.class,
+        ProfessionalConfiguration.class, CheckProfessionalConsoleFactory.class,
+        CheckCreateProfessionalConsole.class})
 public class TestSuite {
 
 }

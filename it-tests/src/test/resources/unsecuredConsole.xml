@@ -1,0 +1,10 @@
+<configadmin xmlns="http://jonas.ow2.org/ns/configadmin/1.0"
+             xmlns:xml="http://www.w3.org/XML/1998/namespace">
+
+  <factory-configuration pid="com.peergreen.webconsole.unsecured" xml:id="adminConsole">
+    <property name="console.name">Peergreen Unsecured Administration Console</property>
+    <property name="console.alias">/pgadmin</property>
+    <property name="default.roles">admin</property>
+  </factory-configuration>
+
+</configadmin>

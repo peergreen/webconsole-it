@@ -17,24 +17,9 @@
   </properties>
 
   <dependencies>
-    <!-- Web BaseConsole  -->
     <dependency>
       <groupId>com.peergreen.webconsole</groupId>
       <artifactId>web-console-api</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>com.peergreen.webconsole</groupId>
-      <artifactId>web-console-core</artifactId>
-      <version>${project.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>com.peergreen.webconsole</groupId>
-      <artifactId>vaadin-7.1.0.beta1</artifactId>
       <version>1.0.0-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
@@ -50,7 +35,7 @@
     <dependency>
       <groupId>com.peergreen.deployment</groupId>
       <artifactId>deployment-api</artifactId>
-      <version>1.0.2-SNAPSHOT</version>
+      <version>1.0.1</version>
       <scope>provided</scope>
     </dependency>
 
@@ -179,7 +164,21 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
+
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${basedir}/mvn-cache</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
     </plugins>
+
 
   </build>
 
