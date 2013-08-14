@@ -55,6 +55,8 @@ public class SuiteConfiguration {
                 systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level").value("WARN"),
                 mavenBundle("org.ow2.chameleon.testing", "osgi-helpers").version("0.6.0"),
                 mavenBundle("com.peergreen.webconsole", "htmlunit-all").version("1.0.0-SNAPSHOT"),
+                mavenBundle("com.peergreen.deployment", "deployment-repository-api").version("1.0.0-SNAPSHOT"),
+                mavenBundle("com.peergreen.deployment", "deployment-repository-core").version("1.0.0-SNAPSHOT"),
                 junitBundles()
         );
     }
