@@ -22,6 +22,7 @@ import com.peergreen.webconsole.it.community.CommunityConfiguration;
 import com.peergreen.webconsole.it.professional.CheckCreateProfessionalConsole;
 import com.peergreen.webconsole.it.professional.CheckProfessionalConsoleFactory;
 import com.peergreen.webconsole.it.professional.ProfessionalConfiguration;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;

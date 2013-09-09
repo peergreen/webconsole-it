@@ -3,6 +3,7 @@ package com.peergreen.webconsole.it;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import com.peergreen.webconsole.it.common.StabilityHelper;
+
 import org.apache.felix.ipojo.extender.queue.QueueService;
 import org.junit.Before;
 import org.junit.FixMethodOrder;

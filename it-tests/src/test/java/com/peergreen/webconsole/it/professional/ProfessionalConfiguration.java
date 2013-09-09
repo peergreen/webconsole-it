@@ -21,6 +21,7 @@ import com.peergreen.deployment.ArtifactProcessRequest;
 import com.peergreen.deployment.DeploymentMode;
 import com.peergreen.deployment.DeploymentService;
 import com.peergreen.webconsole.it.common.StabilityHelper;
+
 import org.apache.felix.ipojo.extender.queue.QueueService;
 import org.junit.Assert;
 import org.junit.Before;

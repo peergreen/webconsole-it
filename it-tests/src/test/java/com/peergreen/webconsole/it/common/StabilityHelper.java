@@ -26,6 +26,7 @@ public class StabilityHelper {
 
     /**
      * This should be moved into chameleon osgi-helper module
+     *
      * @param timeout milliseconds
      * @throws Exception
      */

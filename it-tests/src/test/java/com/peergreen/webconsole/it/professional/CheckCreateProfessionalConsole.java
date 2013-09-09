@@ -8,6 +8,7 @@ import com.peergreen.deployment.ArtifactProcessRequest;
 import com.peergreen.deployment.DeploymentService;
 import com.peergreen.webconsole.Constants;
 import com.peergreen.webconsole.it.community.CheckCreateCommunityConsole;
+
 import org.apache.felix.ipojo.architecture.Architecture;
 import org.apache.felix.ipojo.extender.queue.QueueService;
 import org.junit.Assert;

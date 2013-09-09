@@ -7,6 +7,7 @@ import com.peergreen.deployment.ArtifactBuilder;
 import com.peergreen.deployment.ArtifactProcessRequest;
 import com.peergreen.deployment.DeploymentService;
 import com.peergreen.webconsole.Constants;
+
 import org.apache.felix.ipojo.architecture.Architecture;
 import org.apache.felix.ipojo.extender.queue.QueueService;
 import org.junit.Assert;
@@ -75,7 +76,7 @@ public class CheckCreateCommunityConsole {
 
         osgiHelper.waitForService(Architecture.class, "(architecture.instance=" + Constants.UNSECURED_CONSOLE_PID + ".*)", 0);
         osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.core.vaadin7.BaseUIProvider-0)", 0);
-        for (int i=0; i < NB_SESSIONS; i++) {
+        for (int i = 0; i < NB_SESSIONS; i++) {
             WebClient webClient = new WebClient();
             webClient.getOptions().setThrowExceptionOnScriptError(false);
             webClient.getOptions().setCssEnabled(false);
@@ -93,7 +94,7 @@ public class CheckCreateCommunityConsole {
 
         osgiHelper.waitForService(Architecture.class, "(architecture.instance=" + Constants.SECURED_CONSOLE_PID + ".*)", 0);
         osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.core.vaadin7.BaseUIProvider-1)", 0);
-        for (int i=NB_SESSIONS; i < NB_SESSIONS * 2; i++) {
+        for (int i = NB_SESSIONS; i < NB_SESSIONS * 2; i++) {
             WebClient webClient = new WebClient();
             webClient.getOptions().setThrowExceptionOnScriptError(false);
             webClient.getOptions().setCssEnabled(false);

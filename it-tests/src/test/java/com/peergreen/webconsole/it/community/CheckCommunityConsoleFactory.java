@@ -1,6 +1,7 @@
 package com.peergreen.webconsole.it.community;
 
 import com.peergreen.webconsole.Constants;
+
 import org.apache.felix.ipojo.Factory;
 import org.apache.felix.ipojo.architecture.Architecture;
 import org.junit.Assert;
