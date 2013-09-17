@@ -1,8 +1,23 @@
+/**
+ * Peergreen S.A.S. All rights reserved.
+ * Proprietary and confidential.
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.peergreen.webconsole.it;
 
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
-import com.peergreen.webconsole.it.common.StabilityHelper;
+import static org.ops4j.pax.exam.CoreOptions.junitBundles;
+import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
+import static org.ops4j.pax.exam.CoreOptions.options;
+import static org.ops4j.pax.exam.CoreOptions.systemProperty;
+
+import javax.inject.Inject;
+import java.net.URI;
 
 import org.apache.felix.ipojo.extender.queue.QueueService;
 import org.junit.Before;
@@ -18,13 +33,9 @@ import org.ops4j.pax.exam.spi.reactors.PerSuite;
 import org.ops4j.pax.exam.util.Filter;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
-import java.net.URI;
-
-import static org.ops4j.pax.exam.CoreOptions.junitBundles;
-import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
-import static org.ops4j.pax.exam.CoreOptions.options;
-import static org.ops4j.pax.exam.CoreOptions.systemProperty;
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
+import com.peergreen.webconsole.it.common.StabilityHelper;
 
 /**
  * @author Mohammed Boukada
