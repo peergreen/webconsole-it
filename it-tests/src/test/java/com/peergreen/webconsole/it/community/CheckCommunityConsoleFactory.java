@@ -53,8 +53,8 @@ public class CheckCommunityConsoleFactory {
 
     @Test
     public void TestConsoleFactories() throws Exception {
-        osgiHelper.waitForService(Factory.class, "(service.pid=" + Constants.SECURED_CONSOLE_PID + ")", 3000);
-        osgiHelper.waitForService(Factory.class, "(service.pid=" + Constants.UNSECURED_CONSOLE_PID + ")", 3000);
+        osgiHelper.waitForService(Factory.class, "(service.pid=" + Constants.PRODUCTION_MODE_CONSOLE_PID + ")", 3000);
+        osgiHelper.waitForService(Factory.class, "(service.pid=" + Constants.DEVELOPMENT_MODE_CONSOLE_PID + ")", 3000);
     }
 
     @Test

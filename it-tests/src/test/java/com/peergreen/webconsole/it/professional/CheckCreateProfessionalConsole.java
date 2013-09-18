@@ -86,7 +86,7 @@ public class CheckCreateProfessionalConsole {
         deploymentService.process(Collections.singleton(artifactProcessRequest));
         Thread.sleep(1000);
 
-        osgiHelper.waitForService(Architecture.class, "(architecture.instance=" + Constants.SECURED_CONSOLE_PID + ".*)", 0);
+        osgiHelper.waitForService(Architecture.class, "(architecture.instance=" + Constants.PRODUCTION_MODE_CONSOLE_PID + ".*)", 0);
         osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.core.vaadin7.BaseUIProvider-0)", 0);
         WebClient webClient = new WebClient();
         webClient.getOptions().setThrowExceptionOnScriptError(false);
@@ -103,7 +103,7 @@ public class CheckCreateProfessionalConsole {
         Thread.sleep(5000);
 
         Assert.assertTrue("Unsecured console factory is not avaible in Professional Edition",
-                osgiHelper.getServiceReferences(Architecture.class, "(architecture.instance=" + Constants.UNSECURED_CONSOLE_PID + ".*)").length == 0);
+                osgiHelper.getServiceReferences(Architecture.class, "(architecture.instance=" + Constants.DEVELOPMENT_MODE_CONSOLE_PID + ".*)").length == 0);
         Assert.assertTrue("Unsecured console factory is not avaible in Professional Edition",
                 osgiHelper.getServiceReferences(Architecture.class, "(architecture.instance=com.peergreen.webconsole.core.vaadin7.BaseUIProvider-1)").length == 0);
         boolean error404 = false;

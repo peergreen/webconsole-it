@@ -85,7 +85,7 @@ public class CheckCreateCommunityConsole {
         ArtifactProcessRequest artifactProcessRequest = new ArtifactProcessRequest(webConsoleAdmin);
         deploymentService.process(Collections.singleton(artifactProcessRequest));
 
-        osgiHelper.waitForService(Architecture.class, "(architecture.instance=" + Constants.UNSECURED_CONSOLE_PID + ".*)", 0);
+        osgiHelper.waitForService(Architecture.class, "(architecture.instance=" + Constants.DEVELOPMENT_MODE_CONSOLE_PID + ".*)", 0);
         osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.core.vaadin7.BaseUIProvider-0)", 0);
         for (int i = 0; i < NB_SESSIONS; i++) {
             WebClient webClient = new WebClient();
@@ -103,7 +103,7 @@ public class CheckCreateCommunityConsole {
         deploymentService.process(Collections.singleton(artifactProcessRequest));
         Thread.sleep(1000);
 
-        osgiHelper.waitForService(Architecture.class, "(architecture.instance=" + Constants.SECURED_CONSOLE_PID + ".*)", 0);
+        osgiHelper.waitForService(Architecture.class, "(architecture.instance=" + Constants.PRODUCTION_MODE_CONSOLE_PID + ".*)", 0);
         osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.core.vaadin7.BaseUIProvider-1)", 0);
         for (int i = NB_SESSIONS; i < NB_SESSIONS * 2; i++) {
             WebClient webClient = new WebClient();

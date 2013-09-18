@@ -12,7 +12,7 @@
 <configadmin xmlns="http://jonas.ow2.org/ns/configadmin/1.0"
              xmlns:xml="http://www.w3.org/XML/1998/namespace">
 
-  <factory-configuration pid="com.peergreen.webconsole.secured" xml:id="securedAdminConsole">
+  <factory-configuration pid="com.peergreen.webconsole.production" xml:id="securedAdminConsole">
     <property name="console.name">Peergreen Secured Administration Console</property>
     <property name="console.alias">/securedadmin</property>
   </factory-configuration>
