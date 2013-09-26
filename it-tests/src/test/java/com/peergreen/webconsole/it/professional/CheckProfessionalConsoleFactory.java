@@ -11,7 +11,7 @@
 
 package com.peergreen.webconsole.it.professional;
 
-import com.peergreen.webconsole.Constants;
+import javax.inject.Inject;
 
 import org.apache.felix.ipojo.Factory;
 import org.apache.felix.ipojo.architecture.Architecture;
@@ -27,7 +27,7 @@ import org.ops4j.pax.exam.spi.reactors.PerSuite;
 import org.osgi.framework.BundleContext;
 import org.ow2.chameleon.testing.helpers.OSGiHelper;
 
-import javax.inject.Inject;
+import com.peergreen.webconsole.Constants;
 
 /**
  * @author Mohammed Boukada
@@ -54,12 +54,10 @@ public class CheckProfessionalConsoleFactory {
     @Test
     public void TestSecuredConsoleFactory() throws Exception {
         osgiHelper.waitForService(Factory.class, "(service.pid=" + Constants.PRODUCTION_MODE_CONSOLE_PID + ")", 3000);
-        Assert.assertTrue("Unsecured console factory is not avaible in Professional Edition",
-                osgiHelper.getServiceReferences(Factory.class, "(service.pid=" + Constants.DEVELOPMENT_MODE_CONSOLE_PID + ")").length == 0);
     }
 
     @Test
     public void testProfessionalConsoleFactoryInstance() throws Exception {
-        osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.professional.ProfessionalConsoleFactory-0)", 3000);
+        osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.production.internal.ProductionConsoleFactory-0)", 3000);
     }
 }

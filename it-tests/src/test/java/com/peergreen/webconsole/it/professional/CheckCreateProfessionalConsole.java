@@ -11,14 +11,9 @@
 
 package com.peergreen.webconsole.it.professional;
 
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.peergreen.deployment.Artifact;
-import com.peergreen.deployment.ArtifactBuilder;
-import com.peergreen.deployment.ArtifactProcessRequest;
-import com.peergreen.deployment.DeploymentService;
-import com.peergreen.webconsole.Constants;
-import com.peergreen.webconsole.it.community.CheckCreateCommunityConsole;
+import javax.inject.Inject;
+import java.net.URI;
+import java.util.Collections;
 
 import org.apache.felix.ipojo.architecture.Architecture;
 import org.apache.felix.ipojo.extender.queue.QueueService;
@@ -35,9 +30,14 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.BundleContext;
 import org.ow2.chameleon.testing.helpers.OSGiHelper;
 
-import javax.inject.Inject;
-import java.net.URI;
-import java.util.Collections;
+import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.peergreen.deployment.Artifact;
+import com.peergreen.deployment.ArtifactBuilder;
+import com.peergreen.deployment.ArtifactProcessRequest;
+import com.peergreen.deployment.DeploymentService;
+import com.peergreen.webconsole.Constants;
+import com.peergreen.webconsole.it.community.CheckCreateCommunityConsole;
 
 /**
  * @author Mohammed Boukada
@@ -102,8 +102,7 @@ public class CheckCreateProfessionalConsole {
         deploymentService.process(Collections.singleton(artifactProcessRequest));
         Thread.sleep(5000);
 
-        Assert.assertTrue("Unsecured console factory is not avaible in Professional Edition",
-                osgiHelper.getServiceReferences(Architecture.class, "(architecture.instance=" + Constants.DEVELOPMENT_MODE_CONSOLE_PID + ".*)").length == 0);
+        osgiHelper.waitForService(Architecture.class, "(architecture.instance=" + Constants.DEVELOPMENT_MODE_CONSOLE_PID + ".*)", 0);
         Assert.assertTrue("Unsecured console factory is not avaible in Professional Edition",
                 osgiHelper.getServiceReferences(Architecture.class, "(architecture.instance=com.peergreen.webconsole.core.vaadin7.BaseUIProvider-1)").length == 0);
         boolean error404 = false;

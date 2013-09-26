@@ -11,7 +11,7 @@
 
 package com.peergreen.webconsole.it.community;
 
-import com.peergreen.webconsole.Constants;
+import javax.inject.Inject;
 
 import org.apache.felix.ipojo.Factory;
 import org.apache.felix.ipojo.architecture.Architecture;
@@ -27,7 +27,7 @@ import org.ops4j.pax.exam.spi.reactors.PerSuite;
 import org.osgi.framework.BundleContext;
 import org.ow2.chameleon.testing.helpers.OSGiHelper;
 
-import javax.inject.Inject;
+import com.peergreen.webconsole.Constants;
 
 /**
  * @author Mohammed Boukada
@@ -59,6 +59,6 @@ public class CheckCommunityConsoleFactory {
 
     @Test
     public void testCommunityConsoleFactoryInstance() throws Exception {
-        osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.community.CommunityConsoleFactory-0)", 3000);
+        osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.development.internal.DevelopmentConsoleFactory-0)", 3000);
     }
 }
