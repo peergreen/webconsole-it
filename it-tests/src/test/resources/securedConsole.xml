@@ -14,6 +14,7 @@
 
   <factory-configuration pid="com.peergreen.webconsole.production" xml:id="securedAdminConsole">
     <property name="console.name">Peergreen Secured Administration Console</property>
+    <property name="console.domains">peergreen.admin</property>
     <property name="console.alias">/securedadmin</property>
   </factory-configuration>
 

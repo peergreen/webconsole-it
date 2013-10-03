@@ -20,9 +20,15 @@
                             http://jonas.ow2.org/ns/deployment-plan/maven2-deployment-plan-1.0.xsd"
         atomic="false" id="dp-example">
 
-  <deployment xsi:type="m2:maven2-deploymentType" id="community">
+  <deployment xsi:type="m2:maven2-deploymentType" id="kernel">
     <m2:groupId>com.peergreen.webconsole</m2:groupId>
-    <m2:artifactId>web-console-community</m2:artifactId>
+    <m2:artifactId>peergreen-console-kernel</m2:artifactId>
+    <m2:version>1.0.0-SNAPSHOT</m2:version>
+  </deployment>
+
+  <deployment xsi:type="m2:maven2-deploymentType" id="console">
+    <m2:groupId>com.peergreen.webconsole</m2:groupId>
+    <m2:artifactId>peergreen-control-center-console</m2:artifactId>
     <m2:version>1.0.0-SNAPSHOT</m2:version>
   </deployment>
 </deployment-plan>

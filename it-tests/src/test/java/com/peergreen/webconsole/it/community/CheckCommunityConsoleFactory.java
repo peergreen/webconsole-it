@@ -59,6 +59,6 @@ public class CheckCommunityConsoleFactory {
 
     @Test
     public void testCommunityConsoleFactoryInstance() throws Exception {
-        osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.development.internal.DevelopmentConsoleFactory-0)", 3000);
+        osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.kernel.internal.DevelopmentConsoleFactory-0)", 3000);
     }
 }

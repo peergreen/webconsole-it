@@ -18,15 +18,10 @@ import com.peergreen.webconsole.it.common.CheckConsoleBase;
 import com.peergreen.webconsole.it.community.CheckCommunityConsoleFactory;
 import com.peergreen.webconsole.it.community.CheckCreateCommunityConsole;
 import com.peergreen.webconsole.it.community.CommunityConfiguration;
-import com.peergreen.webconsole.it.professional.CheckCreateProfessionalConsole;
-import com.peergreen.webconsole.it.professional.CheckProfessionalConsoleFactory;
-import com.peergreen.webconsole.it.professional.ProfessionalConfiguration;
 
 @RunWith(Suite.class)
 @SuiteClasses({SuiteConfiguration.class, CommunityConfiguration.class, CheckConsoleBase.class,
-        CheckCommunityConsoleFactory.class, CheckCreateCommunityConsole.class,
-        ProfessionalConfiguration.class, CheckProfessionalConsoleFactory.class,
-        CheckCreateProfessionalConsole.class})
+        CheckCommunityConsoleFactory.class, CheckCreateCommunityConsole.class})
 public class TestSuite {
 
 }

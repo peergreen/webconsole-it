@@ -15,6 +15,7 @@
   <factory-configuration pid="com.peergreen.webconsole.development" xml:id="adminConsole">
     <property name="console.name">Peergreen Unsecured Administration Console</property>
     <property name="console.alias">/pgadmin</property>
+    <property name="console.domains">peergreen.admin</property>
     <property name="default.roles">admin</property>
   </factory-configuration>
 

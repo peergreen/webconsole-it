@@ -11,13 +11,9 @@
 
 package com.peergreen.webconsole.it.community;
 
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.peergreen.deployment.Artifact;
-import com.peergreen.deployment.ArtifactBuilder;
-import com.peergreen.deployment.ArtifactProcessRequest;
-import com.peergreen.deployment.DeploymentService;
-import com.peergreen.webconsole.Constants;
+import javax.inject.Inject;
+import java.net.URI;
+import java.util.Collections;
 
 import org.apache.felix.ipojo.architecture.Architecture;
 import org.apache.felix.ipojo.extender.queue.QueueService;
@@ -34,10 +30,13 @@ import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.BundleContext;
 import org.ow2.chameleon.testing.helpers.OSGiHelper;
 
-import javax.inject.Inject;
-
-import java.net.URI;
-import java.util.Collections;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.peergreen.deployment.Artifact;
+import com.peergreen.deployment.ArtifactBuilder;
+import com.peergreen.deployment.ArtifactProcessRequest;
+import com.peergreen.deployment.DeploymentService;
+import com.peergreen.webconsole.Constants;
 
 /**
  * @author Mohammed Boukada
@@ -92,6 +91,7 @@ public class CheckCreateCommunityConsole {
             webClient.getOptions().setThrowExceptionOnScriptError(false);
             webClient.getOptions().setCssEnabled(false);
             webClient.getOptions().setJavaScriptEnabled(true);
+            Thread.sleep(1000);
             HtmlPage page = webClient.getPage(UNSECURED_CONSOLE_URL);
             osgiHelper.waitForService(Architecture.class, "(architecture.instance=com.peergreen.webconsole.core.vaadin7.BaseUI-" + i + ")", 0);
             webClient.closeAllWindows();

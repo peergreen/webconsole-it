@@ -48,8 +48,6 @@ public class SuiteConfiguration {
     @Filter("(ipojo.queue.mode=async)")
     private QueueService queueService;
 
-    private StabilityHelper helper;
-
     @Configuration
     public Option[] config() throws Exception {
         // Reduce log level.
@@ -58,12 +56,10 @@ public class SuiteConfiguration {
         URI unsecuredConsoleFile = getClass().getResource("/unsecuredConsole.xml").toURI();
         URI securedConsoleFile = getClass().getResource("/securedConsole.xml").toURI();
         URI communityDeploymentPlan = getClass().getResource("/communityDeploymentPlan.xml").toURI();
-        URI professionalDeploymentPlan = getClass().getResource("/professionalDeploymentPlan.xml").toURI();
 
         return options(systemProperty("unsecured.admin.console.test.configuration").value(unsecuredConsoleFile.toString()),
                 systemProperty("secured.admin.console.test.configuration").value(securedConsoleFile.toString()),
                 systemProperty("community.deployment.plan").value(communityDeploymentPlan.toString()),
-                systemProperty("professional.deployment.plan").value(professionalDeploymentPlan.toString()),
                 systemProperty("org.ops4j.pax.logging.DefaultServiceLog.level").value("WARN"),
                 mavenBundle("org.ow2.chameleon.testing", "osgi-helpers").version("0.6.0"),
                 mavenBundle("com.peergreen.webconsole", "htmlunit-all").version("1.0.0-SNAPSHOT"),
@@ -75,7 +71,7 @@ public class SuiteConfiguration {
 
     @Before
     public void init() throws Exception {
-        helper = new StabilityHelper(queueService);
+        StabilityHelper helper = new StabilityHelper(queueService);
         helper.waitForStability();
     }
 
